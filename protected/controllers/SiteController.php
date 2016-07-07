@@ -29,7 +29,28 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+            $model=new Buy('purchase');
+
+    // uncomment the following code to enable ajax-based validation
+    
+    if(isset($_POST['ajax']) && $_POST['ajax']==='buy-buy-form')
+    {
+        echo CActiveForm::validate($model);
+        Yii::app()->end();
+    }
+    
+
+    if(isset($_POST['Buy']))
+    {
+        $model->attributes=$_POST['Buy'];
+        if($model->validate())
+        {
+            // form inputs are valid, do something here
+            return;
+        }
+    }
+    $this->render('buy',array('model'=>$model));
+            
 	}
 
 	/**

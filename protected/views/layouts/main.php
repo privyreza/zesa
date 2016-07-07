@@ -26,8 +26,8 @@
 	<div id="header">
 		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
 	</div><!-- header -->
-
-	<div id="mainmenu">
+        <div class="row">
+        <div id="mainmenu" class="nav navbar">
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/site/index')),
@@ -38,6 +38,7 @@
 			),
 		)); ?>
 	</div><!-- mainmenu -->
+        </div><!-- row -->
 	<?php if(isset($this->breadcrumbs)):?>
 		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
 			'links'=>$this->breadcrumbs,

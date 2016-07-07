@@ -6,12 +6,14 @@
  * The followings are the available columns in table 'buy':
  * @property integer $transactionId
  * @property string $meterNumber
- * @property double $ammount
+ * @property double $amount
  * @property string $customerName
  * @property string $transactionDate
+ * @property string $phoneNumber
  */
 class Buy extends CActiveRecord
 {
+   
 	/**
 	 * @return string the associated database table name
 	 */
@@ -28,13 +30,16 @@ class Buy extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('transactionDate', 'required'),
-			array('ammount', 'numerical'),
-			array('meterNumber', 'length', 'max'=>30),
+                        array('amount, meterNumber,customerName,phoneNumber', 'required'),
+                        array('amount,meterNumber,phoneNumber', 'numerical'),
+			array('meterNumber', 'length', 'max'=>11),
+                        array('meterNumber', 'length', 'min'=>11),
 			array('customerName', 'length', 'max'=>40),
+                        array('customerName', 'length', 'min'=>4),
+                        array('phoneNumber', 'length', 'max'=>20),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('transactionId, meterNumber, ammount, customerName, transactionDate', 'safe', 'on'=>'search'),
+			array('transactionId,meterNumber, amount, customerName', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -57,10 +62,10 @@ class Buy extends CActiveRecord
 		return array(
 			'transactionId' => 'Transaction',
 			'meterNumber' => 'Meter Number',
-			'ammount' => 'Ammount',
+			'amount' => 'Amount',
 			'customerName' => 'Customer Name',
-			'transactionDate' => 'Transaction Date',
-		);
+                    'phoneNumber' => 'Customer Name',
+	);
 	}
 
 	/**
@@ -83,9 +88,10 @@ class Buy extends CActiveRecord
 
 		$criteria->compare('transactionId',$this->transactionId);
 		$criteria->compare('meterNumber',$this->meterNumber,true);
-		$criteria->compare('ammount',$this->ammount);
+		$criteria->compare('amount',$this->amount);
 		$criteria->compare('customerName',$this->customerName,true);
 		$criteria->compare('transactionDate',$this->transactionDate,true);
+                $criteria->compare('phoneNumber',$this->phoneNumber,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

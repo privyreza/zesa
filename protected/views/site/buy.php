@@ -15,32 +15,37 @@
 	'enableAjaxValidation'=>true,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<!--<p class="note">Fields with <span class="required">*</span> are required.</p>-->
 
 	<?php echo $form->errorSummary($model); ?>
 
-	<div class="row">
+<!--	<div class="row">
 		<?php echo $form->labelEx($model,'transactionDate'); ?>
 		<?php echo $form->textField($model,'transactionDate'); ?>
 		<?php echo $form->error($model,'transactionDate'); ?>
+	</div>-->
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'Amount (in $)'); ?>
+		<?php echo $form->textField($model,'amount'); ?>
+		<?php echo $form->error($model,'amount'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'ammount'); ?>
-		<?php echo $form->textField($model,'ammount'); ?>
-		<?php echo $form->error($model,'ammount'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'meterNumber'); ?>
+		<?php echo $form->labelEx($model,'Meter Number'); ?>
 		<?php echo $form->textField($model,'meterNumber'); ?>
 		<?php echo $form->error($model,'meterNumber'); ?>
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'customerName'); ?>
+		<?php echo $form->labelEx($model,'Customer name (Owner of meter)'); ?>
 		<?php echo $form->textField($model,'customerName'); ?>
 		<?php echo $form->error($model,'customerName'); ?>
+	</div>
+<div class="row">
+		<?php echo $form->labelEx($model,'Phone Number'); ?>
+		<?php echo $form->textField($model,'phoneNumber'); ?>
+		<?php echo $form->error($model,'phoneNumber'); ?>
 	</div>
 
 
